@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}User Page{% endblock %}
+{% block content %}
+
+
+
+
+<br>
+<div class="media">
+    <img class="rounded-circle account-img" src="{{ image_file }}"
+        width="100"
+        height="100">
+    <div class="media">
+        <h1 class="account-heading"> &emsp; Username:</h1>
+        <h2 class="text-secondary nameheight"> &nbsp; {{ name }}</h2>
+    </div>
+        
+    <div class="media">
+        <h1 class="account-heading"> &emsp; Email:</h1>
+        <h2 class="text-secondary nameheight"> &nbsp; {{ emails }}</h2>
+    </div>
+</div>
+
+<form method="POST">
+    <h3 align="Left">Upload profile picture</h3>
+    <div class="form-group">
+      <input
+        type="file"
+        class="form-control"
+        id="image_file"
+        name="image_file"
+      >
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<br>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock %}
